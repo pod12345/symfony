@@ -1,3 +1,5 @@
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+app_main:
+    resource: "@ApplicationMainBundle/Resources/config/routing.yml"
+    prefix:   /
+    requirements:
+        _locale: en|ru
