@@ -1,5 +1,10 @@
-app_main:
-    resource: "@ApplicationMainBundle/Resources/config/routing.yml"
-    prefix:   /
-    requirements:
-        _locale: en|ru
+_front:
+    resource: routing_front.yml
+
+# _admin:
+#     resource: routing_admin.yml
+#     prefix:   /admin
+
+# _api:
+#     resource: routing_api.yml
+#     prefix:   /api
