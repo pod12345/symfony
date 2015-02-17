@@ -1,0 +1,7 @@
+services:
+    acme_user.registration.form.type:
+        class: Application\Sonata\UserBundle\Form\Type\RegistrationFormType
+        #Acme\UserBundle\Form\Type\RegistrationFormType
+        arguments: [ Application\Sonata\UserBundle\Entity\User ]
+        tags:
+            - { name: form.type, alias: app_user_registration }
