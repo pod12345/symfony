@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('ApplicationMainBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('ApplicationMainBundle:Main:index.html.twig', array('name' => $name));
     }
 }
