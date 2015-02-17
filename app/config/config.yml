@@ -3,6 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+    # Moopa-bootstrap bundle
+    - { resource: mopa/bootstrap.yml }
+
     # Sonata bundles
     - { resource: fos/user.yml }
 
