@@ -20,5 +20,5 @@ fos_user:
             type: app_user_registration
 
         confirmation:
-            enabled: true
-            template:   ApplicationSonataUserBundle:Registration:email.txt.twig
+            enabled:  true
+            template: ApplicationSonataUserBundle:Registration:email.txt.twig
