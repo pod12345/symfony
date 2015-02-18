@@ -19,8 +19,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             // Application bundles
             new Application\MainBundle\ApplicationMainBundle(),
+            new Application\DataBundle\ApplicationDataBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             // Fetures bundles
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),

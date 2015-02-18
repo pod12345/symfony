@@ -23,12 +23,13 @@ class User extends BaseUser
     /**
      * @var integer $loginCount
      */
-    protected $loginCount;
+    protected $loginCount = 0;
 
     /**
      * @var string $patronymic
      */
     protected $patronymic;
+
     /**
      * Get id
      *
@@ -40,6 +41,19 @@ class User extends BaseUser
     }
 
     /**
+     * Set id
+     *
+     * @param integer $id
+     * @return User
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Sets the email.
      *
      * @param string $email
@@ -47,7 +61,9 @@ class User extends BaseUser
     */
     public function setEmail($email)
     {
-        $this->setUsername($email);
+        if (empty($this->getUsername())) {
+            $this->setUsername($email);
+        }
 
         return parent::setEmail($email);
     }
@@ -60,7 +76,9 @@ class User extends BaseUser
      */
     public function setEmailCanonical($emailCanonical)
     {
-        $this->setUsernameCanonical($emailCanonical);
+        if (empty($this->getUsername())) {
+            $this->setUsernameCanonical($emailCanonical);
+        }
 
         return parent::setEmailCanonical($emailCanonical);
     }
@@ -103,6 +121,39 @@ class User extends BaseUser
     public function setPatronymic($patronymic)
     {
         $this->patronymic = $patronymic;
+
+        return $this;
+    }
+
+    /**
+     * @param string $firstname
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        parent::setFirstname($firstname);
+
+        return $this;
+    }
+
+    /**
+     * @param string $lastname
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        parent::setLastname($lastname);
+
+        return $this;
+    }
+
+    /**
+     * @param string $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        parent::setPhone($phone);
 
         return $this;
     }
