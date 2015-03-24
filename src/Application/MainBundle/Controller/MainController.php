@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('ApplicationMainBundle:Main:index.html.twig', ['titleDesc' => 'Podzamenu.']);
+        return $this->render('ApplicationMainBundle:Main:index.html.twig');
     }
 }

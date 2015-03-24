@@ -1,16 +1,282 @@
 {% extends 'BraincraftedBootstrapBundle::layout.html.twig' %}
-{% block title %} Интернет-магазин{% endblock %}
+{% block title %}Интернет- магазин Подзамену. Продажа запчастей для иномарок.{% endblock %}
+{% block meta %}
+    <meta content="автосервисы, интернетмагазин, интернет-магазин,под замену ру, подзамену, pod zamenu, podzamenu, запчасти для японских автомобилей, запчасти во владивостоке, автозапчасти, lynx,KYB,CTR,Taiho,Tama,NGK,HITACHI,Asuki,CTR,Safety,Denso,Zexel,HKT,FLAG,NOK,Exedy,MOUNTAIN,AISIN,WD-40,Nisshinbo,TP,GMB,5'825,VIC,YEC,jFBK,Sangsin Brake,TOKAI,NPR,Futaba,Musashi,SHIMAHIDE,OSK,NTN,NSK,Koyo,Kyosan,FBJ,NACHI,MRK,TZK,Asahi,Paraut,NKN,K-Flex,CHKK,Nissan,Suzuki,Seiken,Gates,Rib-Top,MS, Payen,Honda,Isuzu,Hino,YUIL,DAEWHA,Sakura,Shinko,AirTech,PMC" lang="ru" name="keywords">
+    <meta content=". Интернет магазин по продаже запчастей для иномарок. Самые полные каталоги автозапчастей для японких автомобилей." name="description">
+    <meta content="Dynamic" name="Document-state">
+    <meta content="document" name="Resource-type">
+    <meta content="0" http-equiv="expires">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="text/html; charset=win-1251" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=0.8" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+{% endblock %}
 {% block body %}
-  <h1>Podzamenu main page</h1>
-  <div>
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-      {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-      <a href="{{ path('fos_user_security_logout') }}">
-        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-      </a>
-    {% else %}
-      <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-      <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
-    {% endif %}
-  </div>
+    <div id="ch_div"></div>
+    <div id="wrap">
+        <div class="navbar navbar-shd">
+            <div class="container">
+                <button class="navbar-toggle" data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                        <li><a href="/manager/sipcalls">Звонки</a></li>
+                        <li><a href="/manager/neworder">Оформить заказ</a></li>
+                        <li><input type="text" id="s_order" placeholder="№" style="margin:5px 0 5px 5px;width: 76px; height: 30px;" class="form-control"></li>
+                        <li><a style="cursor:pointer;" onclick="javascipt: if($('#s_order').val()!=''){document.location='/manager/offer/order/'+$('#s_order').val();}else{document.location='/manager/searchord';}"><span class="glyphicon glyphicon-search"></span></a></li>
+                        <li><a href="/manager/orderslist?root_manager=5">Список заказов</a></li>
+                        <li><a href="/manager/payinfo">Информация о счетах</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right nav-menu">
+                        <li class="dropdown nav-menu-inner">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/profile/orders">Заказы</a></li>
+                                <li><a href="/profile/info">Профиль</a></li>
+                                <li><a href="/admin/">Админка</a></li>
+                                <li><a href="/cashier/">Панель кассира</a></li>
+                                <li><a href="/logistic/">Панель логиста</a></li>
+                                <li><a href="/store/">Панель кладовщика</a></li>
+                                <li><a href="/storemanager/">Панель менеджера по закупкам</a></li>
+                                <li><a href="/storekeeperassistant/">Панель сортировщика</a></li>
+                                <li><a href="/content/">Контент сайта</a></li>
+                                <li><a href="/manager/">Панель менеджеров</a></li>
+                                <li><a href="/applicant/monitor/">Монитор продаж</a></li>
+                                <li><a href="/mainmanager/">Панель руководителя отдела продаж</a></li>
+                                <li><a href="/qualitymanager/"><b>Панель босса</b></a></li>
+                                <li><a href="/franchising/">Панель контроля заявок</a></li>
+                                <li><a href="/courier/">Панель курьера</a></li>
+                                <li><a href="/applicant/">Прохождение тестов</a></li>
+                                <li><a href="/prousermanager/">Работа с оптовиками</a></li>
+                                <li><a href="/hrmanager/">HR-отдел</a></li>
+
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-form logpass">
+                                        <a class="btn btn-sm btn-block" href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        {% else %}
+                            <li class="nav-menu-inner"><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li class="dropdown">
+                                <a href="{{ path('fos_user_security_login') }}" class="dropdown-toggle" data-toggle="dropdown">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                <ul class="container dropdown-menu login-form">
+                                    <form  method="post" action="{{ path("fos_user_security_check") }}" accept-charset="utf-8">
+                                        <li><div class="navbar-form logpass" >
+                                                <input name="username" type="text" class="form-control" placeholder="логин">
+                                            </div></li>
+                                        <li><div class="navbar-form logpass">
+                                                <input  name="password" type="password" class="form-control" placeholder="пароль">
+                                            </div></li>
+                                        <li><div class="navbar-form logpass">
+                                                <input type="hidden" value="<?=$art?>" name="art">
+                                                <input class="btn btn-sm btn-block" type="submit" value="Войти" name = "login">
+                                            </div></li>
+                                    </form>
+                                    <li><a href="/passremind">Забыли пароль?</a></li>
+
+                                </ul>
+                            </li>
+                        {% endif %}
+                        </li>
+                    </ul>        </div>
+                <!-- /.nav-collapse -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <div class="snow"></div>
+        <!-- /.navbar -->
+        <div class="container">
+            <div class="row">
+                <div class="frame-row row">
+                    <div class="col-12 company">
+                        <div class="col-5 visible-sm"></div>
+                        <div class="row">
+                            <div class="pull-right contacts">
+                                <div class="row">
+                                    <p class="text-right tel-contacts"><!--<span class="btn btn-xs btn-callback" title="Закажите обратный звонок" data-toggle="modal" data-target="#modalCallback">Заказать звонок</span>--></p>
+                                </div>
+                                <div class="row">
+                                    <p class="text-right tel tel-contacts"><!--<span class="uhome">Выберите город:</span>--><a href="#" data-toggle="modal" data-target="#myModal" class="tel-locat-modal"><span class="tel-locat">Брянск:</span></a><span class="tel"> </span></p>
+                                </div>
+                                <div class="row">
+                                    <p class="text-right tel-contacts"><span class="tel-locat-ru tel-contacts">Россия:</span> <span class="tel">8(800) 775-95-07</span></p>
+                                </div>
+                                <div class="row">
+                                    <p class="text-right tel-reg tel-contacts">Бесплатный звонок по России test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="search-form col-12">
+                            <ul id="myTab" class="nav nav-tabs">
+                                <li class="col-2 visible-lg nav-tabs-blank"><a></a></li>
+
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade active in" id="art">
+                                    <br>
+                                    <form class="form-horizontal search-back" method="post" accept-charset="utf-8" action="/search">
+                                        <div class="form-group search">
+                                            <label for="inputSearch" class="col-lg-2 control-label visible-lg search-label">Поиск по номеру</label>
+                                            <div class="input-group col-lg-10 search-group">
+                                                <input id="inputSearch" name="art" type="search" class="form-control form-control-search" placeholder="Поиск среди 160 000 товаров в наличии и и свыше 5 000 000 под заказ" value="">
+									<span class="input-group-btn">
+										<input class="btn btn-primary" type="submit" value="Поиск" onclick="javascript: if($('#order_id').val().indexOf('/?order_id=')==-1) {$('#art form').prop('action',$('#art form').prop('action')+'/?order_id='+$('#order_id').val());}else {$('#art form').prop('action',$('#art form').prop('action')+'/?order_id=')}">
+									</span>
+                                            </div>
+                                            <label for="inputSearch" class="col-lg-2 control-label visible-lg search-label" style="margin-top: 5px;">Номер заявки</label>
+                                            <div class="col-lg-2" style="margin-top: 5px;">
+                                                <input name="order_id" id="order_id" type="search" class="form-control" placeholder="№ заявки" value="">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="model">
+                                    <br>
+                                    <form class="form-horizontal search-back" method="post" accept-charset="utf-8" action="/textsearch">
+                                        <div class="form-group search">
+                                            <label for="inputSearch" class="col-lg-2 control-label visible-lg search-label">Поиск по названию</label>
+                                            <div class="input-group col-lg-10 search-group">
+                                                <input id="search_text" name="search_text" type="search" class="form-control form-control-search typeahead" placeholder="Введите название запчасти" value="" data-provide="typeahead" data-items="4" autocomplete="off">
+									<span class="input-group-btn">
+										<input class="btn btn-primary" type="submit" value="Поиск">
+									</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="nav navbar-nav nav-under navbar-nav-under navbar-nav-contacts" style="margin-bottom: 10px;">
+                            <li>
+                                <a href="/oil">
+                                    Моторные масла
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sandbox">
+                            <div id="animateTest">
+                                <div class="pull-right cart">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="container main-content">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+    <div class="footer-color" style="display:none;">
+        <div class="container">
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Выберите ваш город</h4>
+                </div>
+                <div class="modal-body">
+                    <a style="cursor:pointer;" onclick="change_region(1);">Владивосток</a><br>
+                    <a style="cursor:pointer;" onclick="change_region(2);">Уссурийск</a><br>
+                    <a style="cursor:pointer;" onclick="change_region(3);">Магадан</a><br>
+                    <a style="cursor:pointer;" onclick="change_region(4);">Находка</a><br>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalCallback" tabindex="-1" role="dialog" aria-labelledby="modalCallbackLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="modalCallbackLabel">Форма заказа обратного звонка</h4>
+                </div>
+                <form method="post" accept-charset="utf-8" action="/callback" role="form" class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="call_phone_name" class="col-sm-3 control-label">Ваше имя*:</label>
+                            <div class="col-sm-9  ">
+                                <input class="form-control" value="" name="client_name">
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="call_phone_tel" class="col-sm-3 control-label">Ваш телефон*:</label>
+                            <div class="col-sm-9 ">
+                                <input type="text" class="form-control bfh-phone" data-format="+7 (ddd) ddd-dddd" value="" name="client_tel">
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="call_phone_comment" class="col-sm-3 control-label">Ваш вопрос:</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:40px;">
+                            <label for="call_phone_captcha" class="col-sm-3 control-label">Введите текст*:</label>
+                            <div class="col-sm-9 ">
+                                <input type="text" class="form-control" name="checkcode" style="width:150px;float:left;">
+                                <span style="float:right;"><img src="" width="150" height="50" alt="Captcha" class="captcha"></span>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="send_callback" value="send">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="brandModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title" id="brandModalLabel">Информация о бренде <span id="brand_label"></span></h2>
+                </div>
+                <div class="modal-body" id="brand_info">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="distrModal" tabindex="-1" role="dialog" aria-labelledby="distrModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title" id="distrModalLabel">Информация о поставщике</h2>
+                </div>
+                <div class="modal-body" id="distr_info_modal_body">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
